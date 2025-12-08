@@ -13,18 +13,22 @@
   "mcpServers": {
     "xiaohongshu": {
       "command": "npx",
-      "args": ["@xeron688/xiaohongshu-mcp"],
+      "args": ["-y", "@xeron688/xiaohongshu-mcp"],
       "env": {
         "IMAGE_API_URL": "your_api_url",
         "IMAGE_API_KEY": "your_api_key",
         "IMAGE_MODEL": "your_model_name",
-        "DATA_DIR": "./data",
-        "ENDPOINTS": "/v1/images/generations"
+        "ENDPOINTS": "/v1/images/generations",
+        "DATA_DIR": "./data"
       }
     }
   }
 }
 ```
+
+**重要提示**：
+- 使用 `npx -y` 参数可以自动确认安装
+- 替换 `your_api_url`、`your_api_key`、`your_model_name` 为你的实际配置
 
 ### 自定义端点配置
 
@@ -52,7 +56,7 @@
 
 #### 配置示例
 
-**示例 1：使用图片生成端点**
+**示例 1：使用图片生成端点（推荐）**
 
 ```json
 {
@@ -60,7 +64,8 @@
     "IMAGE_API_URL": "your_api_url",
     "IMAGE_API_KEY": "your_api_key",
     "IMAGE_MODEL": "your_model_name",
-    "ENDPOINTS": "/v1/images/generations"
+    "ENDPOINTS": "/v1/images/generations",
+    "DATA_DIR": "./data"
   }
 }
 ```
@@ -73,7 +78,8 @@
     "IMAGE_API_URL": "your_api_url",
     "IMAGE_API_KEY": "your_api_key",
     "IMAGE_MODEL": "your_model_name",
-    "ENDPOINTS": "/v1/chat/completions"
+    "ENDPOINTS": "/v1/chat/completions",
+    "DATA_DIR": "./data"
   }
 }
 ```

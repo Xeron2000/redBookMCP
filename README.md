@@ -21,7 +21,7 @@
   "mcpServers": {
     "xiaohongshu": {
       "command": "npx",
-      "args": ["@xeron688/xiaohongshu-mcp"],
+      "args": ["-y", "@xeron688/xiaohongshu-mcp"],
       "env": {
         "IMAGE_API_URL": "your_api_url",
         "IMAGE_API_KEY": "your_api_key",
@@ -33,6 +33,10 @@
   }
 }
 ```
+
+**重要说明**：
+- 使用 `npx -y` 参数自动确认安装，避免 MCP 服务器启动时卡住
+- 替换 `your_api_url`、`your_api_key`、`your_model_name` 为你的实际配置
 
 重启 Claude Desktop。
 
@@ -65,9 +69,9 @@
 ## 开发
 
 ```bash
-npm install        # 安装依赖
-npm run build      # 编译
-npm run test:run   # 测试
+pnpm install       # 安装依赖
+pnpm build         # 编译
+pnpm test:run      # 测试
 ```
 
 ## 配置详情
