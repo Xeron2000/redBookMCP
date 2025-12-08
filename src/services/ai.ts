@@ -192,13 +192,20 @@ export class AIService {
     let requestBody: any;
     if (isImages) {
       // images/generations 端点格式
+      // 注意：不同的 API 提供商对参数的支持可能不同
+      // 七牛云 API 支持的参数：model, prompt, n, size, response_format
       requestBody = {
         model: this.imageModel,
         prompt: prompt,
         n: 1,
-        size: "1024x1365", // 3:4 比例
-        response_format: "url", // 或 "b64_json"
+        // size: "1024x1024", // 某些模型可能不支持 size 参数，先注释掉
+        response_format: "b64_json", // 使用 base64 格式更稳定
       };
+      
+      // 记录请求信息用于调试
+      console.log(`Calling image API: ${this.getApiUrl()}`);
+      console.log(`Model: ${this.imageModel}`);
+      console.log(`Request body:`, JSON.stringify(requestBody, null, 2));
     } else {
       // chat/completions 端点格式
       requestBody = {
@@ -227,8 +234,10 @@ export class AIService {
     });
 
     if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`API Error Response:`, errorText);
       throw new Error(
-        `Image API error: ${response.status} ${response.statusText}`
+        `Image API error: ${response.status} ${response.statusText}\nDetails: ${errorText}`
       );
     }
 
