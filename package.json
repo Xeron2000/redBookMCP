@@ -1,6 +1,6 @@
 {
   "name": "@xeron688/xiaohongshu-mcp",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "MCP Server for generating Xiaohongshu content outlines and images",
   "main": "build/index.js",
   "type": "module",
